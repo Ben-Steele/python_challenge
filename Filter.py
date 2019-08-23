@@ -13,7 +13,7 @@ GET * WHERE country = us
 
 import copy
 
-class Filter():
+class QueryManager():
 
     def parse_query(self, query_string):
         
@@ -27,7 +27,7 @@ class Filter():
         
         if len(components) > 2:
             raise ValueError('Invalid use of reserved word "WHERE"')
-        elif len(components) = 1:
+        elif len(components) == 1:
             conditions = None
         else:
             conditions = components[1]
@@ -78,8 +78,8 @@ class Filter():
 
     def filter(self, data, conditions):
         filter_data = copy.deepcopy(data)
-        ips_to_remove = set()
         for condition in conditions:
+            ips_to_remove = set()
             key = condition['key']
             operation = condition['operation']
             value = condition['value']
@@ -97,4 +97,21 @@ class Filter():
                     ips_to_remove.add(ip)
                     
             for ip in ips_to_remove:
-                del filter_data['ip']
+                del filter_data[ip]
+                
+        return filter_data
+
+    def limit_fields(self, data, fields):
+        if fields[0] == '*':
+            return data
+        limited_data = {}
+        for ip, attributes in data.iteritems():
+            new_attributes = {}
+            for attribute, value in attributes.iteritems():
+                if attribute in fields:
+                    new_attributes[attribute] = value
+            limited_data[ip] = new_attributes
+
+        return limited_data
+    
+        
