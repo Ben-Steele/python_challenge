@@ -2,6 +2,8 @@ from ParseFile import IPParser
 from GeoIPLookup import GeoIPLookup
 from RDAPLookup import RDAPLookup
 from Filter import QueryManager
+
+import argparse
 import pprint
 
 class IPLookup():
@@ -18,9 +20,7 @@ class IPLookup():
             ip_data.update(self.rdap_lookup.get_rdap_info(ip))
             ip_info[ip] = ip_data
         if query:
-            fields, conditions = self.query_manager.parse_query(query)
-            ip_info = self.query_manager.filter(ip_info, conditions)
-            ip_info = self.query_manager.limit_fields(ip_info, fields)
+            ip_info = self.query_manager.execute_query(ip_info, query)
         return ip_info
 
     def get_ips_from_text(self, text):
@@ -32,14 +32,24 @@ class IPLookup():
     def save_caches(self):
         self.geo_lookup.save_cache()
         self.rdap_lookup.save_cache()
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-f', dest='ip_file', help = 'The path to the file containing ip addresses')
+    parser.add_argument('-q', dest='query', help = 'The query string to filter results')
     
+    return parser.parse_args()
+
+        
 if __name__ == "__main__":
     lookup = IPLookup()
+    args = parse_args()
+    
     try:
-        ips = lookup.get_ips_from_file('list_of_ips.txt')
-        info = lookup.get_ip_info(ips, "GET * WHERE country_name = Mexico AND region_code = HID")
-        print len(info)
+        ips = lookup.get_ips_from_file(args.ip_file)
+        info = lookup.get_ip_info(ips, args.query)#"GET events, ipVersion, city WHERE country_name = United States AND region_code < CO")
         pprint.pprint(info)
+        print len(info)
         lookup.save_caches()
     except:
         lookup.save_caches()
