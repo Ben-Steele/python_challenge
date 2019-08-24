@@ -23,13 +23,14 @@ no names are changed, they will be used automatically.
 
 The program is run through the command line. The options are listed below.
 
-  -h, --help  show this help message and exit
-  -f IP_FILE  The path to the file containing ip addresses
-  -q QUERY    The query string to filter results
+-h, --help  show this help message and exit
+-f IP_FILE  The path to the file containing ip addresses
+-q QUERY    The query string to filter results
 
 Example queries:
 
 python IPLookup.py -f list_of_ips.txt -q "GET city, region_name, country_name WHERE country_name = Spain, Brazil AND region_code > H"
+
 python IPLookup.py -f list_of_ips.txt -q "GET * WHERE country_name = United States AND region_code = CO"
 
 

@@ -26,12 +26,20 @@ class GeoIPLookup():
             The geoip info in a dictionary
         """
         cache_value = self.cache.get(ip)
+        
         if cache_value is not None:
             geo_info = cache_value
         else:
             url = self.BASE_URL + ip
-            response = requests.request("GET", url, headers=self.HEADERS)
-            geo_info = json.loads(response.text)
+            try:
+                response = requests.request("GET", url, headers=self.HEADERS)
+                geo_info = json.loads(response.text)
+            except Exception as e:
+                # This blanket exception isn't ideal, but I don't want to spend
+                #  too much time figuring out the common exceptions for this API
+                #  and determining how to handle them.
+                geo_info = {'geoip connection Error': str(e)}
+                
             self.cache.set(ip, geo_info)
 
         return geo_info

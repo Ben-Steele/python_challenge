@@ -28,12 +28,9 @@ class RDAPLookup():
             try:
                 response = requests.request("GET", url)
                 rdap_info = json.loads(response.text)
-            except ValueError:
-                # The ip was not found, return an empty dict
-                if response.status_code == 404:
-                    rdap_info = {}
-                else:
-                    raise
+            except Exception as e:
+                rdap_info = {'rdap connection error': e}
+                
             self.rdap_cache.set(ip, rdap_info)
             
         return rdap_info
