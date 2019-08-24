@@ -4,7 +4,10 @@ import json
 
 class SimpleCache():
     """
-    Very simple cache class that is sufficient for this implementation
+    Very simple cache class.
+    Features:
+        - Save the cache to a file and load from a file.
+        - Set an expiration date for each cache item.
     """
     
     def __init__(self, save_file = None, expiration_limit = None):
@@ -22,6 +25,13 @@ class SimpleCache():
         self.load()
         
     def get(self, cache_key):
+        """
+        return an object from the cache, there is a cache miss, return None
+        input:
+            - cache_key: the key to look for in the cache
+        output:
+            The value assosiated with cache_key.  None if cache_key does not exist in the cache
+        """
         if cache_key in self.memory:
             cache_value =  self.memory[cache_key]
             if self.is_expired(cache_value):
@@ -33,6 +43,12 @@ class SimpleCache():
         return return_value
 
     def set(self, key, value):
+        """
+        Save a value into the cache
+        inputs:
+            - key: the key for the cache entry
+            - value: the data to be assosiated with the given key
+        """
         if self.expiration_limit:
             expiration = datetime.datetime.now() + datetime.timedelta(days=self.expiration_limit)
         else:
@@ -43,6 +59,9 @@ class SimpleCache():
     def is_expired(self, cache_value):
         """
         determine whether the cache entry is expired
+        inputs:
+            - cache_value: the cache object to be checked. has the following dictionary structure:
+                            {'expiration': a date, 'data': the data associated with the key}
         """
         expiration = datetime.datetime.strptime(cache_value['expiration'], '%Y-%m-%d %H:%M:%S.%f')
         if expiration < datetime.datetime.now():

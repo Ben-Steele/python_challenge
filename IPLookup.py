@@ -1,3 +1,6 @@
+"""
+This file is the entry point.  It basically coordinates all the other classes.
+"""
 from ParseFile import IPParser
 from GeoIPLookup import GeoIPLookup
 from RDAPLookup import RDAPLookup
@@ -14,6 +17,15 @@ class IPLookup():
     query_manager = QueryManager()
 
     def get_ip_info(self, ips, query=None):
+        """
+        Return the info specified in "query" for the ips provided
+        inputs:
+            - ips: a list of ip addresses
+            - query: a query string as defined in Filter.py
+        output:
+            data in a dictionary of the form:
+                {ip address: {field1: ____, field2: ____}}
+        """
         ip_info = {}
         for ip in ips:
             ip_data = self.geo_lookup.get_geo_info(ip)
@@ -24,12 +36,23 @@ class IPLookup():
         return ip_info
 
     def get_ips_from_text(self, text):
+        """
+        Extract all the ip addresses from the given text
+        See get_ip_addresses in ParseFile.py
+        """
         return self.ip_parser.get_ip_addresses(text)
 
     def get_ips_from_file(self, file_path):
+        """
+        Extract all the ip addresses from the given file
+        See get_ip_addresses in ParseFile.py for details
+        """
         return self.ip_parser.get_ip_addresses(file_path, from_file=True)
 
     def save_caches(self):
+        """
+        Save geo and rdap cached data so it can be use in the next run
+        """
         self.geo_lookup.save_cache()
         self.rdap_lookup.save_cache()
 

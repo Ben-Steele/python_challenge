@@ -17,6 +17,13 @@ class GeoIPLookup():
     cache = SimpleCache.SimpleCache(save_file = 'GeoCacheFile.txt', expiration_limit = 30)
 
     def get_geo_info(self, ip):
+        """
+        return the geoip info from freegeoup.app for the given ip address
+        input:
+            - ip: an ip address
+        output:
+            The geoip info in a dictionary
+        """
         cache_value = self.cache.get(ip)
         if cache_value is not None:
             geo_info = cache_value
@@ -29,6 +36,9 @@ class GeoIPLookup():
         return geo_info
 
     def save_cache(self):
+        """
+        Save the cached geoip data
+        """
         self.cache.save()
         
 if __name__ == "__main__":
