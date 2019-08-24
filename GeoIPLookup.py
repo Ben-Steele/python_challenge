@@ -4,9 +4,10 @@ import pprint
 import SimpleCache
 
 class GeoIPLookup():
+    """
+    This class handles connecitons to a geoip server
+    """
 
-    # I chose this geo ip api because its free, simple to set up, and simple to use
-    # The big downside is that I cannot query multiple ips in one query
     BASE_URL = "https://freegeoip.app/json/"
     
     HEADERS = {
@@ -17,6 +18,13 @@ class GeoIPLookup():
     cache = SimpleCache.SimpleCache(save_file = 'GeoCacheFile.txt', expiration_limit = 30)
 
     def get_geo_info(self, ip):
+        """
+        return the geoip info from freegeoip.app for the given ip address
+        input:
+            - ip: an ip address
+        output:
+            The geoip info in a dictionary
+        """
         cache_value = self.cache.get(ip)
         if cache_value is not None:
             geo_info = cache_value
@@ -29,6 +37,9 @@ class GeoIPLookup():
         return geo_info
 
     def save_cache(self):
+        """
+        Save the cached geoip data
+        """
         self.cache.save()
         
 if __name__ == "__main__":

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module ParseFile</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>ParseFile</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/BS/Programs/IPLookup/ParseFile.py">/Users/BS/Programs/IPLookup/ParseFile.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="ParseFile.html#IPParser">IPParser</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IPParser">class <strong>IPParser</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;contains&nbsp;methods&nbsp;used&nbsp;to&nbsp;extract&nbsp;ip&nbsp;addresses&nbsp;from&nbsp;text<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="IPParser-get_ip_addresses"><strong>get_ip_addresses</strong></a>(self, input_text, from_file<font color="#909090">=False</font>)</dt><dd><tt>Given&nbsp;raw&nbsp;text,&nbsp;this&nbsp;method&nbsp;extracts&nbsp;all&nbsp;the&nbsp;valid&nbsp;ip&nbsp;addresses&nbsp;within&nbsp;it<br>
+input&nbsp;can&nbsp;be&nbsp;a&nbsp;string&nbsp;or&nbsp;a&nbsp;path&nbsp;to&nbsp;a&nbsp;file,&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;path&nbsp;to&nbsp;a&nbsp;file,&nbsp;file_path&nbsp;must&nbsp;be&nbsp;set&nbsp;to&nbsp;True<br>
+Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;input_text:&nbsp;The&nbsp;raw&nbsp;text&nbsp;to&nbsp;extract&nbsp;ip&nbsp;addresses&nbsp;from&nbsp;(either&nbsp;string&nbsp;of&nbsp;text&nbsp;or&nbsp;path&nbsp;to&nbsp;the&nbsp;file&nbsp;with&nbsp;text)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;file_path:&nbsp;Set&nbsp;to&nbsp;True&nbsp;if&nbsp;input_text&nbsp;is&nbsp;a&nbsp;file&nbsp;path,&nbsp;otherwise&nbsp;set&nbsp;to&nbsp;False<br>
+Output:&nbsp;A&nbsp;list&nbsp;of&nbsp;ip&nbsp;addresses</tt></dd></dl>
+
+<dl><dt><a name="IPParser-is_valid_ip"><strong>is_valid_ip</strong></a>(self, ip_address)</dt><dd><tt>Validate&nbsp;that&nbsp;each&nbsp;component&nbsp;of&nbsp;the&nbsp;ip&nbsp;is&nbsp;from&nbsp;0-255<br>
+Inputs:&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;ip_address(str):&nbsp;the&nbsp;string&nbsp;to&nbsp;validate<br>
+output:&nbsp;True&nbsp;if&nbsp;ip_address&nbsp;is&nbsp;a&nbsp;valid&nbsp;ip&nbsp;address,&nbsp;False&nbsp;if&nbsp;not</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

@@ -1,7 +1,10 @@
 import re
 
 class IPParser():
-
+    """
+    This class contains methods used to extract ip addresses from text
+    """
+    
     def get_ip_addresses(self, input_text, from_file=False):
         """
         Given raw text, this method extracts all the valid ip addresses within it
