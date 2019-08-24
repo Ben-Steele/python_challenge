@@ -14,9 +14,9 @@ class SimpleCache():
         """
         Inputs:
             - save_file: a path to a file.  If provided, the cache can be saved to 
-                                   this location on shutdown and loaded from it on instantiation
+                         this location on shutdown and loaded from it on instantiation
             - expiration_limit: the number of days an object can stay in the cache for before 
-                                 it must be reloaded
+                                it must be reloaded
         """
 
         self.save_file = save_file
@@ -26,7 +26,7 @@ class SimpleCache():
         
     def get(self, cache_key):
         """
-        return an object from the cache, there is a cache miss, return None
+        return an object from the cache, if there is a cache miss, return None
         input:
             - cache_key: the key to look for in the cache
         output:
@@ -61,7 +61,8 @@ class SimpleCache():
         determine whether the cache entry is expired
         inputs:
             - cache_value: the cache object to be checked. has the following dictionary structure:
-                            {'expiration': a date, 'data': the data associated with the key}
+                           {'expiration': a date, 
+                            'data': the data associated with the key}
         """
         expiration = datetime.datetime.strptime(cache_value['expiration'], '%Y-%m-%d %H:%M:%S.%f')
         if expiration < datetime.datetime.now():

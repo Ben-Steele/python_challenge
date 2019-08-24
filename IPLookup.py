@@ -10,7 +10,10 @@ import argparse
 import pprint
 
 class IPLookup():
-
+    """
+    This class allows you to retrieve and filter RDAP and geoip data for a set of ip addresses.
+    It can also parse text for valid ip addresses.
+    """
     ip_parser = IPParser()
     geo_lookup = GeoIPLookup()
     rdap_lookup = RDAPLookup()
@@ -24,10 +27,13 @@ class IPLookup():
             - query: a query string as defined in Filter.py
         output:
             data in a dictionary of the form:
-                {ip address: {field1: ____, field2: ____}}
+                {ip address: {field1: ____, 
+                              field2: ____ }
+                 }
         """
         ip_info = {}
         for ip in ips:
+            # grab the data for this ip and save it into ip_info
             ip_data = self.geo_lookup.get_geo_info(ip)
             ip_data.update(self.rdap_lookup.get_rdap_info(ip))
             ip_info[ip] = ip_data
@@ -57,9 +63,10 @@ class IPLookup():
         self.rdap_lookup.save_cache()
 
 def parse_args():
+    
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', dest='ip_file', help = 'The path to the file containing ip addresses')
-    parser.add_argument('-q', dest='query', help = 'The query string to filter results')
+    parser.add_argument('-f', dest='ip_file', default = '', help = 'The path to the file containing ip addresses')
+    parser.add_argument('-q', dest='query', default = '', help = 'The query string to filter results')
     
     return parser.parse_args()
 
@@ -70,7 +77,7 @@ if __name__ == "__main__":
     
     try:
         ips = lookup.get_ips_from_file(args.ip_file)
-        info = lookup.get_ip_info(ips, args.query)#"GET events, ipVersion, city WHERE country_name = United States AND region_code < CO")
+        info = lookup.get_ip_info(ips, args.query)
         pprint.pprint(info)
         print len(info)
         lookup.save_caches()

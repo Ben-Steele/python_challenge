@@ -4,9 +4,10 @@ import pprint
 import SimpleCache
 
 class GeoIPLookup():
+    """
+    This class handles connecitons to a geoip server
+    """
 
-    # I chose this geo ip api because its free, simple to set up, and simple to use
-    # The big downside is that I cannot query multiple ips in one query
     BASE_URL = "https://freegeoip.app/json/"
     
     HEADERS = {
@@ -18,7 +19,7 @@ class GeoIPLookup():
 
     def get_geo_info(self, ip):
         """
-        return the geoip info from freegeoup.app for the given ip address
+        return the geoip info from freegeoip.app for the given ip address
         input:
             - ip: an ip address
         output:
