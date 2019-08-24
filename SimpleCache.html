@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module SimpleCache</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>SimpleCache</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/BS/Programs/IPLookup/SimpleCache.py">/Users/BS/Programs/IPLookup/SimpleCache.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+</td><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="SimpleCache.html#SimpleCache">SimpleCache</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SimpleCache">class <strong>SimpleCache</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Very&nbsp;simple&nbsp;cache&nbsp;class.<br>
+Features:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Save&nbsp;the&nbsp;cache&nbsp;to&nbsp;a&nbsp;file&nbsp;and&nbsp;load&nbsp;from&nbsp;a&nbsp;file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Set&nbsp;an&nbsp;expiration&nbsp;date&nbsp;for&nbsp;each&nbsp;cache&nbsp;item.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SimpleCache-__init__"><strong>__init__</strong></a>(self, save_file<font color="#909090">=None</font>, expiration_limit<font color="#909090">=None</font>)</dt><dd><tt>Inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;save_file:&nbsp;a&nbsp;path&nbsp;to&nbsp;a&nbsp;file.&nbsp;&nbsp;If&nbsp;provided,&nbsp;the&nbsp;cache&nbsp;can&nbsp;be&nbsp;saved&nbsp;to&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this&nbsp;location&nbsp;on&nbsp;shutdown&nbsp;and&nbsp;loaded&nbsp;from&nbsp;it&nbsp;on&nbsp;instantiation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;expiration_limit:&nbsp;the&nbsp;number&nbsp;of&nbsp;days&nbsp;an&nbsp;object&nbsp;can&nbsp;stay&nbsp;in&nbsp;the&nbsp;cache&nbsp;for&nbsp;before&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;must&nbsp;be&nbsp;reloaded</tt></dd></dl>
+
+<dl><dt><a name="SimpleCache-get"><strong>get</strong></a>(self, cache_key)</dt><dd><tt>return&nbsp;an&nbsp;object&nbsp;from&nbsp;the&nbsp;cache,&nbsp;if&nbsp;there&nbsp;is&nbsp;a&nbsp;cache&nbsp;miss,&nbsp;return&nbsp;None<br>
+input:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cache_key:&nbsp;the&nbsp;key&nbsp;to&nbsp;look&nbsp;for&nbsp;in&nbsp;the&nbsp;cache<br>
+output:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;value&nbsp;assosiated&nbsp;with&nbsp;cache_key.&nbsp;&nbsp;None&nbsp;if&nbsp;cache_key&nbsp;does&nbsp;not&nbsp;exist&nbsp;in&nbsp;the&nbsp;cache</tt></dd></dl>
+
+<dl><dt><a name="SimpleCache-is_expired"><strong>is_expired</strong></a>(self, cache_value)</dt><dd><tt>determine&nbsp;whether&nbsp;the&nbsp;cache&nbsp;entry&nbsp;is&nbsp;expired<br>
+inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;cache_value:&nbsp;the&nbsp;cache&nbsp;object&nbsp;to&nbsp;be&nbsp;checked.&nbsp;has&nbsp;the&nbsp;following&nbsp;dictionary&nbsp;structure:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'expiration':&nbsp;a&nbsp;date,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'data':&nbsp;the&nbsp;data&nbsp;associated&nbsp;with&nbsp;the&nbsp;key}</tt></dd></dl>
+
+<dl><dt><a name="SimpleCache-load"><strong>load</strong></a>(self)</dt><dd><tt>load&nbsp;file&nbsp;contents&nbsp;into&nbsp;the&nbsp;cache</tt></dd></dl>
+
+<dl><dt><a name="SimpleCache-save"><strong>save</strong></a>(self)</dt><dd><tt>Save&nbsp;cache&nbsp;contents&nbsp;into&nbsp;a&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="SimpleCache-set"><strong>set</strong></a>(self, key, value)</dt><dd><tt>Save&nbsp;a&nbsp;value&nbsp;into&nbsp;the&nbsp;cache<br>
+inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;key:&nbsp;the&nbsp;key&nbsp;for&nbsp;the&nbsp;cache&nbsp;entry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;value:&nbsp;the&nbsp;data&nbsp;to&nbsp;be&nbsp;assosiated&nbsp;with&nbsp;the&nbsp;given&nbsp;key</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

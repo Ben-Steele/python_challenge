@@ -1,0 +1,104 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Filter</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Filter</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/BS/Programs/IPLookup/Filter.py">/Users/BS/Programs/IPLookup/Filter.py</a></font></td></tr></table>
+    <p><tt>Query&nbsp;Language&nbsp;Definition:<br>
+&nbsp;<br>
+All&nbsp;queries&nbsp;start&nbsp;with&nbsp;"GET",&nbsp;signifying&nbsp;you&nbsp;want&nbsp;to&nbsp;retrieve&nbsp;data.<br>
+e.g.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;GET&nbsp;...<br>
+&nbsp;<br>
+After&nbsp;GET,&nbsp;you&nbsp;may&nbsp;list&nbsp;fields&nbsp;that&nbsp;you&nbsp;want&nbsp;to&nbsp;recieve&nbsp;by&nbsp;writing&nbsp;the&nbsp;names&nbsp;of&nbsp;the&nbsp;fields&nbsp;separated&nbsp;by&nbsp;commas.<br>
+&nbsp;&nbsp;You&nbsp;may&nbsp;use&nbsp;"*"&nbsp;to&nbsp;signify&nbsp;that&nbsp;you&nbsp;want&nbsp;to&nbsp;recieve&nbsp;all&nbsp;fields&nbsp;available.<br>
+e.g.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;GET&nbsp;field1,&nbsp;field2,&nbsp;field3&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;GET&nbsp;*&nbsp;...<br>
+&nbsp;<br>
+After&nbsp;indicating&nbsp;the&nbsp;fields&nbsp;you&nbsp;want&nbsp;to&nbsp;recieve,&nbsp;you&nbsp;may&nbsp;filter&nbsp;the&nbsp;results&nbsp;using&nbsp;a&nbsp;"where"&nbsp;clause.&nbsp;&nbsp;<br>
+The&nbsp;"where"&nbsp;clause&nbsp;must&nbsp;start&nbsp;with&nbsp;the&nbsp;keyword&nbsp;"WHERE"&nbsp;and&nbsp;it&nbsp;can&nbsp;contain&nbsp;multiple&nbsp;conditions&nbsp;separated&nbsp;by&nbsp;the&nbsp;keyword&nbsp;"AND".<br>
+e.g.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;GET&nbsp;field1,&nbsp;field2,&nbsp;field3&nbsp;WHERE&nbsp;condition1&nbsp;AND&nbsp;condition2&nbsp;AND&nbsp;condition3<br>
+&nbsp;<br>
+Conditions&nbsp;can&nbsp;use&nbsp;three&nbsp;operations;&nbsp;"=",&nbsp;"&lt;",&nbsp;"&gt;".&nbsp;&nbsp;The&nbsp;condition&nbsp;must&nbsp;list&nbsp;the&nbsp;field&nbsp;name&nbsp;first,&nbsp;then&nbsp;the&nbsp;operator,&nbsp;then&nbsp;the&nbsp;comparison&nbsp;value.<br>
+&nbsp;&nbsp;All&nbsp;values&nbsp;will&nbsp;be&nbsp;compared&nbsp;as&nbsp;string&nbsp;objects.<br>
+e.g.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field1&nbsp;&gt;&nbsp;5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field4&nbsp;=&nbsp;my&nbsp;condition's&nbsp;value<br>
+&nbsp;<br>
+You&nbsp;may&nbsp;specify&nbsp;that&nbsp;a&nbsp;single&nbsp;field&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;many&nbsp;values&nbsp;by&nbsp;having&nbsp;a&nbsp;comma&nbsp;separated&nbsp;list&nbsp;of&nbsp;values&nbsp;after&nbsp;a&nbsp;"="&nbsp;operator.<br>
+e.g.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field2&nbsp;=&nbsp;my&nbsp;condition's&nbsp;value,&nbsp;5,&nbsp;another&nbsp;value<br>
+&nbsp;<br>
+Examples&nbsp;of&nbsp;a&nbsp;full&nbsp;query&nbsp;expression:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;GET&nbsp;field1,&nbsp;field2,&nbsp;field3&nbsp;WHERE&nbsp;field1&nbsp;&gt;&nbsp;5&nbsp;AND&nbsp;field2&nbsp;=&nbsp;my&nbsp;condition's&nbsp;value,&nbsp;5,&nbsp;another&nbsp;value&nbsp;AND&nbsp;field6&nbsp;&lt;&nbsp;255<br>
+&nbsp;&nbsp;&nbsp;&nbsp;GET&nbsp;*&nbsp;WHERE&nbsp;field3&nbsp;=&nbsp;abcde<br>
+&nbsp;<br>
+"GET",&nbsp;"WHERE",&nbsp;"AND",&nbsp;",",&nbsp;"=",&nbsp;"&gt;",&nbsp;and&nbsp;"&lt;"&nbsp;are&nbsp;reserved&nbsp;words&nbsp;and&nbsp;cannot&nbsp;be&nbsp;used&nbsp;except&nbsp;as&nbsp;syntax&nbsp;in&nbsp;the&nbsp;query.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="Filter.html#QueryManager">QueryManager</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="QueryManager">class <strong>QueryManager</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;handles&nbsp;parsing&nbsp;and&nbsp;execution&nbsp;of&nbsp;queries.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="QueryManager-execute_query"><strong>execute_query</strong></a>(self, data, query)</dt><dd><tt>The&nbsp;method&nbsp;takes&nbsp;in&nbsp;data&nbsp;and&nbsp;a&nbsp;query,&nbsp;and&nbsp;returns&nbsp;only&nbsp;the&nbsp;data&nbsp;that&nbsp;satisfies&nbsp;the&nbsp;query<br>
+inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;data:&nbsp;a&nbsp;dictionary.&nbsp;The&nbsp;structure&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;is&nbsp;as&nbsp;follows:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ip:&nbsp;{field1:&nbsp;_____,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field2:&nbsp;_____&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;query:&nbsp;a&nbsp;query&nbsp;string<br>
+output:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;data&nbsp;is&nbsp;returned&nbsp;in&nbsp;the&nbsp;same&nbsp;format&nbsp;it&nbsp;was&nbsp;given&nbsp;in,&nbsp;but&nbsp;everything&nbsp;that&nbsp;doesn't&nbsp;satisfy&nbsp;the&nbsp;query&nbsp;is&nbsp;removed</tt></dd></dl>
+
+<dl><dt><a name="QueryManager-filter_data"><strong>filter_data</strong></a>(self, data, conditions)</dt><dd><tt>Remove&nbsp;records&nbsp;from&nbsp;the&nbsp;data&nbsp;that&nbsp;do&nbsp;not&nbsp;match&nbsp;the&nbsp;conditions&nbsp;provided<br>
+inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;data:&nbsp;a&nbsp;dictionary.&nbsp;The&nbsp;structure&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;is&nbsp;as&nbsp;follows:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ip:&nbsp;{field1:&nbsp;_____,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field2:&nbsp;_____&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;conditions:&nbsp;a&nbsp;list&nbsp;of&nbsp;conditions&nbsp;as&nbsp;described&nbsp;in&nbsp;parse_query<br>
+output:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;The&nbsp;data&nbsp;is&nbsp;returned&nbsp;in&nbsp;the&nbsp;same&nbsp;format&nbsp;it&nbsp;was&nbsp;given&nbsp;in,&nbsp;with&nbsp;the&nbsp;records&nbsp;that&nbsp;didn't&nbsp;match&nbsp;the&nbsp;conditions&nbsp;removed</tt></dd></dl>
+
+<dl><dt><a name="QueryManager-limit_fields"><strong>limit_fields</strong></a>(self, data, fields)</dt><dd><tt>Returns&nbsp;"data"&nbsp;with&nbsp;only&nbsp;fields&nbsp;that&nbsp;are&nbsp;in&nbsp;"fields"<br>
+inputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;data:&nbsp;same&nbsp;as&nbsp;filter_data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;fields:&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names<br>
+outputs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;the&nbsp;data&nbsp;is&nbsp;returned&nbsp;in&nbsp;the&nbsp;same&nbsp;format&nbsp;it&nbsp;was&nbsp;given&nbsp;in,&nbsp;but&nbsp;each&nbsp;record&nbsp;only&nbsp;contains&nbsp;fields&nbsp;that&nbsp;are&nbsp;in&nbsp;"fields"</tt></dd></dl>
+
+<dl><dt><a name="QueryManager-parse_query"><strong>parse_query</strong></a>(self, query_string)</dt><dd><tt>Parse&nbsp;the&nbsp;query&nbsp;string&nbsp;into&nbsp;a&nbsp;more&nbsp;structured&nbsp;format&nbsp;so&nbsp;it&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;filter&nbsp;the&nbsp;results<br>
+input:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;query_string:&nbsp;the&nbsp;query&nbsp;string&nbsp;to&nbsp;be&nbsp;parsed<br>
+output:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;A&nbsp;tuple&nbsp;containing&nbsp;2&nbsp;elements:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;A&nbsp;list&nbsp;of&nbsp;the&nbsp;fields&nbsp;to&nbsp;be&nbsp;returned&nbsp;for&nbsp;each&nbsp;record<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;A&nbsp;list&nbsp;of&nbsp;conditions&nbsp;where&nbsp;each&nbsp;condition&nbsp;has&nbsp;the&nbsp;following&nbsp;format:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'key':&nbsp;field&nbsp;name,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'operation':&nbsp;either&nbsp;"=",&nbsp;"&lt;",&nbsp;or&nbsp;"&gt;"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'value':&nbsp;the&nbsp;value&nbsp;to&nbsp;compare&nbsp;the&nbsp;field&nbsp;against</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
